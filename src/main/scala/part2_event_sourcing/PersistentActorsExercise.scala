@@ -22,30 +22,30 @@ object PersistentActorsExercise extends App {
 
     override def receiveCommand: Receive = {
       case vote @ Vote(citizenPID, candidate) =>
-        /*
+        if (!citizens.contains(vote.citizenPID)) {
+          /*
         follow the pattern
 
         1) create the event
         2) persist the event
         3) handle a state change after persisting is successful
          */
-        persist(vote) { _ => // COMMAND sourcing
-          handleInternalStateChange(vote)
+          persist(vote) { _ => // COMMAND sourcing
+            handleInternalStateChange(citizenPID, candidate)
+          }
         }
       case "print" =>
         log.info("Current state: ")
     }
 
-    def handleInternalStateChange(vote: Vote): Unit = {
-      if (!citizens.contains(vote.citizenPID)) {
-        citizens.add(vote.citizenPID)
-        val votes = poll.getOrElse(vote.candidate, 0)
-        poll.put(vote.candidate, votes + 1)
+    def handleInternalStateChange(citizenPID: String, candidate: String): Unit = {
+
+        citizens.add(citizenPID)
+        val votes = poll.getOrElse(candidate, 0)
+        poll.put(candidate, votes + 1)
       }
-    }
 
     override def receiveRecover: Receive = ???
 
   }
-
 }
