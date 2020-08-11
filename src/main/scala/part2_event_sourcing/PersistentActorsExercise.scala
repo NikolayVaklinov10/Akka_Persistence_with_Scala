@@ -36,7 +36,7 @@ object PersistentActorsExercise extends App {
           }
         }
       case "print" =>
-        log.info("Current state: ")
+        log.info(s"Current state: \nCitizens: $citizens\npolls: $poll")
     }
 
     def handleInternalStateChange(citizenPID: String, candidate: String): Unit = {
