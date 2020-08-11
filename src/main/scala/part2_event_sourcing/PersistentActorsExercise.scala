@@ -1,6 +1,6 @@
 package part2_event_sourcing
 
-import akka.actor.ActorLogging
+import akka.actor.{ActorLogging, ActorSystem, Props}
 import akka.persistence.PersistentActor
 
 import scala.collection.mutable
@@ -46,7 +46,26 @@ object PersistentActorsExercise extends App {
         poll.put(candidate, votes + 1)
       }
 
-    override def receiveRecover: Receive = ???
-
+    override def receiveRecover: Receive = {
+      case vote @ Vote(citizenPID, candidate) =>
+        log.info(s"Recovered: $vote")
+        handleInternalStateChange(citizenPID, candidate)
+    }
   }
+
+  val system = ActorSystem("PersistentActorExercise")
+  val votingStation = system.actorOf(Props[VotingStation], "simpleVotingStation")
+
+  val votesMap = Map[String, String](
+    "Alice" -> "Martin",
+    "Bob" -> "Roland",
+    "Charlie" -> "Marin",
+    "David" -> "Jonas",
+    "Daniel" -> "Martin"
+  )
+
+  votesMap.keys.foreach { citizen =>
+    votingStation ! Vote(citizen, votesMap(citizen))
+  }
+  votingStation ! "print"
 }
