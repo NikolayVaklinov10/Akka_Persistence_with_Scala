@@ -31,6 +31,7 @@ object PersistentActorsExercise extends App {
         3) handle a state change after persisting is successful
          */
           persist(vote) { _ => // COMMAND sourcing
+            log.info(s"Persisted: $vote")
             handleInternalStateChange(citizenPID, candidate)
           }
         }
