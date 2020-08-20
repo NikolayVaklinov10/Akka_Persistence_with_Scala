@@ -7,6 +7,7 @@ object PersistAsyncDemo extends App {
   case class Command(contents: String)
   case class Event(contents: String)
 
+
   object CriticalStreamProcessor {
     def props(eventAggregator: ActorRef) = Props(new CriticalStreamProcessor(eventAggregator))
   }
