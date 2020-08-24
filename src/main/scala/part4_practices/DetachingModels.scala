@@ -36,12 +36,12 @@ object DetachingModels extends App {
   val system = ActorSystem("DetachingModels", ConfigFactory.load().getConfig("detachingModels"))
   val couponManager = system.actorOf(Props[CouponManager], "couponManager")
 
-  //  for (i <- 10 to 15) {
-  //    val coupon = Coupon(s"MEGA_COUPON_$i", 100)
-  //    val user = User(s"$i", s"user_$i@rtjvm.com", s"John Doe $i")
-  //
-  //    couponManager ! ApplyCoupon(coupon, user)
-  //  }
+//    for (i <- 10 to 15) {
+//      val coupon = Coupon(s"MEGA_COUPON_$i", 100)
+//      val user = User(s"$i", s"user_$i@rtjvm.com", s"John Doe $i")
+//
+//      couponManager ! ApplyCoupon(coupon, user)
+//    }
 
 
 }
