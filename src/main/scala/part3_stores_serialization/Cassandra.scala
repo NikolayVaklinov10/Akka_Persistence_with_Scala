@@ -3,6 +3,7 @@ package part3_stores_serialization
 import akka.actor.{ActorSystem, Props}
 import com.typesafe.config.ConfigFactory
 
+
 object Cassandra extends App {
   val cassandraActorSystem = ActorSystem("cassandraSystem", ConfigFactory.load().getConfig("cassandraDemo"))
   val persistentActor = cassandraActorSystem.actorOf(Props[SimplePersistentActor], "simplePersistentActor")
