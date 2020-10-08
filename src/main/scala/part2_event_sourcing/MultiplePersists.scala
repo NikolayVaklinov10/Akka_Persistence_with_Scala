@@ -21,7 +21,7 @@ object MultiplePersists extends App {
   case class InvoiceRecord(invoiceRecordId: Int, recipient: String, date: Date, amount: Int)
 
 
-  
+
   object DiligentAccountant {
     def props(taxId: String, taxAuthority: ActorRef) = Props(new DiligentAccountant(taxId, taxAuthority))
   }
