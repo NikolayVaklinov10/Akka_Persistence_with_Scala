@@ -8,6 +8,7 @@ import com.typesafe.config.ConfigFactory
 import scala.collection.mutable
 
 object EventAdaptors extends App {
+  
 
   // store for acoustic guitars
   val ACOUSTIC = "acoustic"
