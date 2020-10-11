@@ -13,7 +13,7 @@ import scala.util.Random
 
 object PersistenceQueryDemo extends App {
 
-  
+
   val system = ActorSystem("PersistenceQueryDemo", ConfigFactory.load().getConfig("persistenceQuery"))
 
   // read journal
@@ -21,6 +21,7 @@ object PersistenceQueryDemo extends App {
 
   // give me all persistence IDs
   val persistenceIds = readJournal.currentPersistenceIds()
+
 
   // boilerplate so far
   implicit val materializer = ActorMaterializer()(system)
