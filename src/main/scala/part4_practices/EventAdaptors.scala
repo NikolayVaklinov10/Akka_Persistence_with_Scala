@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigFactory
 import scala.collection.mutable
 
 object EventAdaptors extends App {
-  
+
 
   // store for acoustic guitars
   val ACOUSTIC = "acoustic"
@@ -18,6 +18,7 @@ object EventAdaptors extends App {
   case class Guitar(id: String, model: String, make: String, guitarType: String = ACOUSTIC)
   // command
   case class AddGuitar(guitar: Guitar, quantity: Int)
+  
   // event
   case class GuitarAdded(guitarId: String, guitarModel: String, guitarMake: String, quantity: Int)
   case class GuitarAddedV2(guitarId: String, guitarModel: String, guitarMake: String, quantity: Int, guitarType: String)
@@ -73,5 +74,6 @@ object EventAdaptors extends App {
   //    inventoryManager ! AddGuitar(guitar, 5)
   //  }
   inventoryManager ! "print"
+
 
 }
