@@ -8,6 +8,7 @@ import com.typesafe.config.ConfigFactory
 import scala.collection.mutable
 
 object DetachingModels extends App {
+  
   class CouponManager extends PersistentActor with ActorLogging {
     import DomainModel._
 
