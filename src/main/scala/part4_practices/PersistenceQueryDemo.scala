@@ -66,6 +66,8 @@ object PersistenceQueryDemo extends App {
   case class PlaylistPurchased(id: Int, songs: List[Song])
 
   class MusicStoreCheckoutActor extends PersistentActor with ActorLogging {
+
+    // the id for the actor
     override def persistenceId: String = "music-store-checkout"
 
     var latestPlaylistId = 0
