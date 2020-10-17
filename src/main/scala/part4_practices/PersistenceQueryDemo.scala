@@ -24,6 +24,7 @@ object PersistenceQueryDemo extends App {
 
 
   // boilerplate so far
+  
   implicit val materializer = ActorMaterializer()(system)
   //  persistenceIds.runForeach { persistenceId =>
   //    println(s"Found persistence ID: $persistenceId")
