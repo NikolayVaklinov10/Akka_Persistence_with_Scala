@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigFactory
 import scala.collection.mutable
 
 object DetachingModels extends App {
-  
+
   class CouponManager extends PersistentActor with ActorLogging {
     import DomainModel._
 
@@ -26,6 +26,7 @@ object DetachingModels extends App {
         }
     }
 
+    
     override def receiveRecover: Receive = {
       case event @ CouponApplied(code, user) =>
         log.info(s"Recovered $event")
