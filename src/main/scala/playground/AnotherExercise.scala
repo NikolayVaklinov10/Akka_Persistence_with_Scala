@@ -8,7 +8,7 @@ object AnotherExercise extends App {
 
 
   println("My total number is "+incrementer(3.4,4.6)+ " the indented incrementer function works")
-
+//  Note use dotty for using the new features of scala 3
   
 
 }
